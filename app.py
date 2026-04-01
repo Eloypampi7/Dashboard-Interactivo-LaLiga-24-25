@@ -4,33 +4,9 @@ import matplotlib.pyplot as plt
 from mplsoccer import Pitch
 import networkx as nx
 
-# 1. Configuración de la página (opcional, pero ayuda a ver mejor los datos)
-st.set_page_config(layout="wide")
 
-st.title("Visualizador de Datos Parquet")
+df = pd.read_parquet("Eventing.parquet")
 
-# 2. CARGA OPTIMIZADA: Usamos el decorador cache_data para que 
-# los 85.6 MB se queden en la "memoria compartida" y no se recarguen.
-@st.cache_data
-def cargar_todo():
-    # El motor 'pyarrow' es el más rápido para archivos Parquet
-    data = pd.read_parquet("Eventing.parquet", engine='pyarrow')
-    return data
-
-# Mensaje de estado para que el usuario sepa que está cargando
-with st.spinner('Cargando base de datos completa...'):
-    df = cargar_todo()
-
-# 3. VISUALIZACIÓN EFICIENTE:
-# st.dataframe crea una tabla interactiva que solo envía al navegador 
-# las filas que estás viendo en ese momento (Lazy loading).
-st.subheader(f"Mostrando {df.shape[0]} filas y {df.shape[1]} columnas")
-
-st.dataframe(
-    df, 
-    use_container_width=True, # Ajusta la tabla al ancho de la pantalla
-    hide_index=True           # Ahorra espacio quitando la columna de índices
-)
 
 # =========================================================
 # CONFIG
