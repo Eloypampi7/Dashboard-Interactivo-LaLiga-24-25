@@ -5,13 +5,8 @@ from mplsoccer import Pitch
 import networkx as nx
 
 
-try:
     df = pd.read_parquet("Eventing.parquet")
-    st.write("✅ Datos cargados")
-    st.write(df.head())
-except Exception as e:
-    st.error("❌ Error cargando datos")
-    st.write(e)
+
 
 # =========================================================
 # CONFIG
