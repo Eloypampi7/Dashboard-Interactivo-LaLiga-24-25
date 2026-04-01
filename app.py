@@ -5,7 +5,7 @@ from mplsoccer import Pitch
 import networkx as nx
 
 
-df = pd.read_parquet("Eventing Modelado.parquet")
+df = pd.read_parquet("Eventing.parquet")
 
 # =========================================================
 # CONFIG
