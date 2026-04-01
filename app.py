@@ -4,8 +4,7 @@ import matplotlib.pyplot as plt
 from mplsoccer import Pitch
 import networkx as nx
 
-
-    df = pd.read_parquet("Eventing.parquet")
+df = pd.read_parquet("Eventing.parquet")
 
 
 # =========================================================
