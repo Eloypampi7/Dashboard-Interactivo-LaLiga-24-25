@@ -5,8 +5,7 @@ from mplsoccer import Pitch
 import networkx as nx
 
 
-url = "https://colab.research.google.com/drive/1Di_S_l9AQc1M7SbuTrVFIU3CGYTF5co6?usp=drive_link"
-df = pd.read_csv(url, on_bad_lines='skip')
+df = pd.read_parquet("Eventing Modelado.parquet")
 
 # =========================================================
 # CONFIG
@@ -25,7 +24,6 @@ st.markdown("""
 # =========================================================
 # DATA
 # =========================================================
-df = pd.read_csv("Eventing.csv")
 
 def clean(df):
     df["Event Type"] = df["Event Type"].astype(str)
