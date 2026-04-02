@@ -419,6 +419,40 @@ axs["title"].text(
 )
 
 st.pyplot(fig)
+
+# =========================================================
+# Mapa de Pases Permitidos
+# =========================================================
+
+
+st.subheader("Mapa de pases permitidos ")
+
+df_team = df[
+    (df['Team'].str.lower() != team.lower()) &
+    (df['Event Type'].str.lower() == 'pass')
+]
+
+pitch = Pitch(
+    pitch_type='statsbomb',
+    pitch_color='#0e0e0e',
+    line_color='white',
+    linewidth=1
+)
+
+fig, ax = pitch.draw(figsize=(10, 7))
+
+pitch.hexbin(
+    df_team['Start X'],
+    df_team['Start Y'],
+    ax=ax,
+    gridsize=(14, 10),
+    cmap='Blues',
+    edgecolors='white',
+    linewidth=0.6,
+    alpha=0.85
+)
+
+st.pyplot(fig)
 # =========================================================
 # Mapa de Tiros
 # =========================================================
